@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css" />
+  <script src="https://cdn.plot.ly/plotly-latest.js"></script>
+  <script src="lib/puck.js"></script>
+  <style>
+    #tb-results td,
+    #tb-results th {
+      text-align: right
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container is-fluid">
+    <nav class="level">
+      <div class="level-left">
+
+        <div class="level-item">
+          <button id="btnConnect" class="button">Connect!</button>
+        </div>
+        <div class="level-item">
+          <button id="btnDisconnect" disabled="disabled" class="button">Disconnect</button>
+        </div>
+        <div class="level-item">
+          <button id="btnExtend" class="button">Extend</button>
+        </div>
+        <div class="level-item">
+          <label for="chkAutoExtend" class="checkbox">
+            Auto-extend
+            <input type="checkbox" name="chkAutoExtend" id="chkAutoExtend" checked /></label>
+        </div>
+        <div class="level-item">
+          <button id="btnStart" class="button is-success" disabled>Start</button>
+          <button id="btnStop" class="button is-black" disabled>Stop</button>
+        </div>
+      </div>
+
+      <div class="level-right">
+        <div class="level-item">
+          <span id="s1"></span> sample / sec
+        </div>
+        <div class="level-item">
+          <button id="btnRandom" class="button">Add random data</button>
+        </div>
+        <div class="level-item">
+          <button id="btnClear" class="button is-danger">Clear all data</button>
+        </div>
+      </div>
+
+    </nav>
+
+    <table id="tb-results" class="table is-striped is-narrow">
+      <thead>
+        <tr style="text-align: right">
+          <th></th>
+          <th>U [V]</th>
+          <th>I [mA]</th>
+          <th>P [mW]</th>
+          <th>Sample count</th>
+          <th>&Delta;t [ms]</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Latest:</th>
+          <td><b id="s_u">-</b></td>
+          <td><b id="s_i">-</b></td>
+          <td><b id="s_p">-</b></td>
+          <td><b id="s_cnt">-</b></td>
+          <td><b id="s_dt">-</b></td>
+        </tr>
+        <tr>
+          <th>Visible:</th>
+          <td><b id="s_vis_u">-</b></td>
+          <td><b id="s_vis_i">-</b></td>
+          <td><b id="s_vis_p">-</b></td>
+          <td><b id="s_vis_cnt">-</b></td>
+          <td><b id="s_vis_dt">-</b></td>
+        </tr>
+        <tr>
+          <th>Selected:</th>
+          <td><b id="s_sel_u">-</b></td>
+          <td><b id="s_sel_i">-</b></td>
+          <td><b id="s_sel_p">-</b></td>
+          <td><b id="s_sel_cnt">-</b></td>
+          <td><b id="s_sel_dt">-</b></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="graph"></div>
+</body>
+
+<script src="meter.js"></script>
+
+</html>
